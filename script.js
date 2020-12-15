@@ -1,7 +1,7 @@
 function Animal(name){
     this.name = name;
 }
-
+//
 Animal.prototype.action = function(){
   document.getElementById(this.actionSoundName).play();
   
