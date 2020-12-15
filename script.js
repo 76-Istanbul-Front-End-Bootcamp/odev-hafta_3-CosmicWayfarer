@@ -25,16 +25,15 @@ class Animal {
       tbStyle.style.backgroundColor="green";
       tbStyle.style.color="white";
     })
-    
+  
+   
   
     petActionTDButton.onclick = this.action;
     petsTable.querySelector("tbody").appendChild(petTR);
 }
-action(){
-  document.getElementById(this.actionSoundName).play();
+
 }
  
-} 
 
 /*
 function Animal(name){
@@ -74,17 +73,38 @@ constructor(name){
   super(name); 
   
 }
+image(){
+   let bodyEL=document.querySelector("body");
+   document.querySelector("td").addEventListener("click",function(e){
+    let img=document.createElement("img");
+     img.setAttribute("src","https://static.vets-now.com/uploads/2017/01/My-cat-had-an-electric-shock-what-should-I-do-Vets-Now.jpg");
+     e.stopPropagation();
+     bodyEL.appendChild(img);
+    });
+}
+//image=
 legs = 4;
 actionText = "Meoow";
 actionSoundName = "meow";
 
 
 }
+
 class Monkey extends Animal{
 constructor(name){
   super(name);
 
 }
+image(){
+   let bodyEL=document.querySelector("body");
+   document.querySelector("td").addEventListener("click",function(e){
+    let img=document.createElement("img");
+     img.setAttribute("src","https://images.theconversation.com/files/56078/original/zkmxyt9c-1407516907.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1000&fit=clip");
+     e.stopPropagation();
+     bodyEL.appendChild(img);
+    });
+}
+
 legs = 2;
 actionText = "Scream";
 actionSoundName = "scream";
@@ -114,6 +134,8 @@ Monkey.prototype = Animal.prototype;
 
 var Mila = new Cat("Mila");
 Mila.putInTheDocument();
+Mila.image();
 
 var Charlie = new Monkey("Charlie");
 Charlie.putInTheDocument();
+Charlie.image();
