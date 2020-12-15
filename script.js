@@ -20,6 +20,11 @@ class Animal {
     petActionTD.appendChild(petActionTDButton);
     petTR.appendChild(petActionTD);
     
+    var tbStyle=petTR.querySelector("td");
+    tbStyle.addEventListener("mouseover",function(){
+      tbStyle.style.backgroundColor="green";
+      tbStyle.style.color="white";
+    })
     
   
     petActionTDButton.onclick = this.action;
