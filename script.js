@@ -23,28 +23,31 @@ class Animal {
     petActionTDButton.onclick = this.action.bind(this);
     petsTable.querySelector("tbody").appendChild(petTR);
     let petActionTDget=document.getElementsByTagName("td");
-    
+    petTR.addEventListener("click",this.image.bind(this));
+
     petActionTDButton.addEventListener("click",function(event){
        event.stopPropagation();
     });
-    for(let i=0;i<petActionTDget.length;i++){
+    /*for(let i=0;i<petActionTDget.length;i++){
      petActionTDget[i].addEventListener("click",this.image.bind(this));
   } 
- 
+ */
 }
 action = function(){
   document.getElementById(this.actionSoundName).play();
   
 }
 image = function(event){
-   let bodyEL=document.querySelector("body");
+let myImg=document.querySelector("img");
+myImg.src=this.srcUrl;
+   /*let bodyEL=document.querySelector("body");
    let divEL=document.createElement("div");
    let imgEL=document.createElement("img");
    imgEL.src=this.srcUrl;
        event.stopPropagation();
         bodyEL.appendChild(divEL);
         divEL.appendChild(imgEL);
-  
+  */
   }
 
   
@@ -92,7 +95,7 @@ Animal.prototype.putInTheDocument = function(){
 class Cat extends Animal{
 constructor(name){
   super(name); 
-  
+  this.srcUrl;
 }
 
 
@@ -107,7 +110,7 @@ actionSoundName = "meow";
 class Monkey extends Animal{
 constructor(name){
   super(name);
-
+this.srcUrl;
 }
 
 srcUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcOa26kUHB8zfNOWlOUIbUT2SMskBcDF0vEw&usqp=CAU"
