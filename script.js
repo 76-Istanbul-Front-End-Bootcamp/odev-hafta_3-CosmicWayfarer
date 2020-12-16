@@ -1,7 +1,8 @@
 class Animal {
   constructor(name){
     this.name=name;
-  }
+    }
+  
   putInTheDocument (){
     var petsTable = document.getElementById("petsTable");
     var petTR = document.createElement("tr");
@@ -19,21 +20,39 @@ class Animal {
     petActionTDButton.textContent = this.actionText;
     petActionTD.appendChild(petActionTDButton);
     petTR.appendChild(petActionTD);
-    
-    var tbStyle=petTR.querySelector("td");
-    tbStyle.addEventListener("mouseover",function(){
-      tbStyle.style.backgroundColor="green";
-      tbStyle.style.color="white";
-    })
-  
-   
-  
-    petActionTDButton.onclick = this.action;
+    petActionTDButton.onclick = this.action.bind(this);
     petsTable.querySelector("tbody").appendChild(petTR);
+
+    var petActionTDget=document.getElementsByTagName("td");
+  for(let i=0;i<petActionTDget.length;i++){
+     petActionTDget[i].addEventListener("click",this.image.bind(this));
+    }
+    
+}
+action = function(){
+  document.getElementById(this.actionSoundName).play();
+}
+image = function(event){
+   var bodyEL=document.querySelector("body");
+   var imgEL=document.createElement("img");
+   //var getButton=document.getElementsByTagName("button");
+    imgEL.src=this.srcUrl;
+    bodyEL.appendChild(imgEL);
+    event.stopPropagation();
+    
+    
+
+    
+  }
+
+  
 }
 
-}
- 
+/*
+    // "https://static.vets-now.com/uploads/2017/01/My-cat-had-an-electric-shock-what-should-I-do-Vets-Now.jpg");
+   
+
+
 
 /*
 function Animal(name){
@@ -73,16 +92,9 @@ constructor(name){
   super(name); 
   
 }
-image(){
-   let bodyEL=document.querySelector("body");
-   document.querySelector("td").addEventListener("click",function(e){
-    let img=document.createElement("img");
-     img.setAttribute("src","https://static.vets-now.com/uploads/2017/01/My-cat-had-an-electric-shock-what-should-I-do-Vets-Now.jpg");
-     e.stopPropagation();
-     bodyEL.appendChild(img);
-    });
-}
-//image=
+
+
+srcUrl="https://static.vets-now.com/uploads/2017/01/My-cat-had-an-electric-shock-what-should-I-do-Vets-Now.jpg";
 legs = 4;
 actionText = "Meoow";
 actionSoundName = "meow";
@@ -95,16 +107,8 @@ constructor(name){
   super(name);
 
 }
-image(){
-   let bodyEL=document.querySelector("body");
-   document.querySelector("td").addEventListener("click",function(e){
-    let img=document.createElement("img");
-     img.setAttribute("src","https://images.theconversation.com/files/56078/original/zkmxyt9c-1407516907.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1000&fit=clip");
-     e.stopPropagation();
-     bodyEL.appendChild(img);
-    });
-}
 
+srcUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcOa26kUHB8zfNOWlOUIbUT2SMskBcDF0vEw&usqp=CAU"
 legs = 2;
 actionText = "Scream";
 actionSoundName = "scream";
@@ -134,8 +138,7 @@ Monkey.prototype = Animal.prototype;
 
 var Mila = new Cat("Mila");
 Mila.putInTheDocument();
-Mila.image();
+
 
 var Charlie = new Monkey("Charlie");
 Charlie.putInTheDocument();
-Charlie.image();
