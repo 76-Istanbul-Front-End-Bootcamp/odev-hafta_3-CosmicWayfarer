@@ -3,7 +3,7 @@ class Animal {
     this.name=name;
     }
   
-  putInTheDocument (event){
+  putInTheDocument (){
     var petsTable = document.getElementById("petsTable");
     var petTR = document.createElement("tr");
   
@@ -22,6 +22,7 @@ class Animal {
     petTR.appendChild(petActionTD);
     petActionTDButton.onclick = this.action.bind(this);
     petsTable.querySelector("tbody").appendChild(petTR);
+    
     let petActionTDget=document.getElementsByTagName("td");
     petTR.addEventListener("click",this.image.bind(this));
 
@@ -34,7 +35,7 @@ action = function(){
   document.getElementById(this.actionSoundName).play();
   
 }
-image = function(event){
+image = function(){
 let myImg=document.querySelector("img");
 myImg.src=this.srcUrl;
 
@@ -42,7 +43,6 @@ myImg.src=this.srcUrl;
 
   
 }
-
 
 class Cat extends Animal{
 constructor(name){
