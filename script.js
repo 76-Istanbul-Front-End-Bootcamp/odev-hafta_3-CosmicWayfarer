@@ -22,31 +22,29 @@ class Animal {
     petTR.appendChild(petActionTD);
     petActionTDButton.onclick = this.action.bind(this);
     petsTable.querySelector("tbody").appendChild(petTR);
-    petActionTDButton.addEventListener("click",this.image.bind(this));
-    var petActionTDget=document.getElementsByTagName("td");
+    let petActionTDget=document.getElementsByTagName("td");
+    
     petActionTDButton.addEventListener("click",function(event){
        event.stopPropagation();
     });
-  for(let i=0;i<petActionTDget.length;i++){
+    for(let i=0;i<petActionTDget.length;i++){
      petActionTDget[i].addEventListener("click",this.image.bind(this));
-    }
-    
+  } 
+ 
 }
-action = function(event){
+action = function(){
   document.getElementById(this.actionSoundName).play();
-  event.stopPropagation();
+  
 }
 image = function(event){
-   var bodyEL=document.querySelector("body");
-   var divEL=document.createElement("div");
-   var imgEL=document.createElement("img");
+   let bodyEL=document.querySelector("body");
+   let divEL=document.createElement("div");
+   let imgEL=document.createElement("img");
+   imgEL.src=this.srcUrl;
        event.stopPropagation();
+        bodyEL.appendChild(divEL);
+        divEL.appendChild(imgEL);
   
-    imgEL.src=this.srcUrl;
-    bodyEL.appendChild(divEL);
-    divEL.appendChild(imgEL);
-
-    
   }
 
   
